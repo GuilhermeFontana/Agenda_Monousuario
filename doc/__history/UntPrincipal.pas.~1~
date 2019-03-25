@@ -1,0 +1,180 @@
+unit UntPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.Buttons;
+
+type
+  TForm1 = class(TForm)
+    LE_Usuario: TLabeledEdit;
+    LE_Senha: TLabeledEdit;
+    Lbl_Logar: TLabel;
+    Lbl_Cadastrar: TLabel;
+    Panel1: TPanel;
+    PageControl1: TPageControl;
+    TS_Login: TTabSheet;
+    TS_Agenda: TTabSheet;
+    StringGrid1: TStringGrid;
+    Memo1: TMemo;
+    BBtn_Cad: TBitBtn;
+    BBtn_Editar: TBitBtn;
+    BBtn_Del: TBitBtn;
+    procedure Lbl_LogarClick(Sender: TObject);
+    procedure Lbl_CadastrarClick(Sender: TObject);
+    procedure TS_AgendaShow(Sender: TObject);
+    procedure StringGrid1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  type
+    Usuario = record
+
+      Nome: string[50];
+      Senha: string[50];
+
+    end;
+
+  type
+    Contato = record
+
+      Nome: string [50];
+      Organização: string [75];
+      Telefone: string[14];
+      E_Mail: string [25];
+      Relacionamento: integer;
+      Notas: string [200];
+
+    end;
+var
+  Form1: TForm1;
+
+  Users: array [0..99] of Usuario;
+  Contatos: array[0..999] of Contato;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Lbl_CadastrarClick(Sender: TObject);
+var
+  i: Integer;
+  Aux: Integer;
+  Teste: Boolean;
+begin
+  Teste:= False;
+
+  for i := 99 downto 0 do
+  begin
+
+    if Users[i].Nome = '' then
+      Aux:= i;
+
+  end;
+
+  for i := 0 to Aux do
+  begin
+
+    if LE_Usuario.Text = Users[i].Nome then
+      Teste:= True;
+
+  end;
+
+
+  if Teste = False then
+  begin
+
+    Users[Aux].Nome:= LE_Usuario.Text;
+    Users[Aux].Senha:= LE_Senha.Text;
+
+    LE_Usuario.Text:= '';
+    LE_Senha.Text:= '';
+
+  end
+    else
+      ShowMessage('nome de usuário já cadastrado, por favor escolha outro');
+
+end;
+
+procedure TForm1.Lbl_LogarClick(Sender: TObject);
+var
+  i: Integer;
+begin
+
+  for i := 0 to 99 do
+  begin
+
+    if (Users[i].Nome = LE_Usuario.Text) and (LE_Senha.Text = Users[i].Senha) then
+      ShowMessage('bom vindo ' + Users[i].Nome)
+    else
+      ShowMessage('usuário ou senha incorretos');
+
+  end;
+
+
+end;
+
+procedure TForm1.StringGrid1Click(Sender: TObject);
+var
+  Aux1: string;
+  i: Integer;
+  Aux2: Integer;
+begin
+  Aux1:= StringGrid1.Cells[1,StringGrid1.Row];
+
+  for i := 0 to 99 do
+  begin
+
+    if Aux1 = Contatos[i].Telefone then
+      Aux2:= i;
+
+  end;
+
+  Memo1.Clear;
+  Memo1.Lines.Add('Nome:');
+  Memo1.Lines.Add(Contatos[Aux2].Nome);
+
+  Memo1.Lines.Add('');
+
+  Memo1.Lines.Add('Telefone:');
+  Memo1.Lines.Add(Contatos[Aux2].Telefone);
+
+  Memo1.Lines.Add('');
+
+  Memo1.Lines.Add('Organização:');
+  Memo1.Lines.Add(Contatos[Aux2].Organização);
+
+  Memo1.Lines.Add('');
+
+  Memo1.Lines.Add('E-Mail:');
+  Memo1.Lines.Add(Contatos[Aux2].E_Mail);
+
+  Memo1.Lines.Add('');
+
+  Memo1.Lines.Add('Relacionamento:');
+  //Memo1.Lines.Add(Contatos[Aux2].Relacionamento);
+
+  Memo1.Lines.Add('');
+
+  Memo1.Lines.Add('Notas:');
+  Memo1.Lines.Add(Contatos[Aux2].Notas);
+
+  BBtn_Editar.Enabled:= True
+
+end;
+
+procedure TForm1.TS_AgendaShow(Sender: TObject);
+begin
+  StringGrid1.Cells[0,0]:= 'Nome';
+  StringGrid1.Cells[1,0]:= 'Telefone';
+
+  BBtn_Editar.Enabled:= False;
+end;
+
+end.

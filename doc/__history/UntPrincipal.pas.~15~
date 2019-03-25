@@ -1,0 +1,492 @@
+unit UntPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.Buttons, Vcl.Mask, Vcl.WinXCalendars;
+
+type
+  TForm1 = class(TForm)
+    PageControl1: TPageControl;
+    TS_Agenda: TTabSheet;
+    StringGrid1: TStringGrid;
+    Memo1: TMemo;
+    BBtn_Cad: TBitBtn;
+    BBtn_Editar: TBitBtn;
+    BBtn_Del: TBitBtn;
+    TS_Cadastro: TTabSheet;
+    MaskEdit1: TMaskEdit;
+    Label1: TLabel;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
+    LabeledEdit3: TLabeledEdit;
+    Label2: TLabel;
+    Memo2: TMemo;
+    Label3: TLabel;
+    BitBtn1: TBitBtn;
+    Label4: TLabel;
+    MaskEdit2: TMaskEdit;
+    CalendarPicker1: TCalendarPicker;
+    Label5: TLabel;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    Label6: TLabel;
+    Label7: TLabel;
+    MaskEdit3: TMaskEdit;
+    Label8: TLabel;
+    RadioGroup1: TRadioGroup;
+    BitBtn2: TBitBtn;
+    GB_Filtros: TGroupBox;
+    LabeledEdit4: TLabeledEdit;
+    TrackBar1: TTrackBar;
+    RadioGroup2: TRadioGroup;
+    MaskEdit4: TMaskEdit;
+    MaskEdit5: TMaskEdit;
+    ComboBox1: TComboBox;
+    ComboBox4: TComboBox;
+    LabeledEdit5: TLabeledEdit;
+    Button1: TButton;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    CheckBox7: TCheckBox;
+    CheckBox8: TCheckBox;
+    Label9: TLabel;
+    CheckBox9: TCheckBox;
+    procedure TS_AgendaShow(Sender: TObject);
+    procedure StringGrid1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
+    //
+    function Verifica_Pos(): Integer;
+    function Num_Contatos(): Integer;
+    function Idade (Data: TDate): Real;
+    //
+    procedure Atualiza_Lista();
+    procedure Editar_Contatos(Index: Integer);
+    procedure Salvar(x: Integer);
+    procedure Limpar ();
+    //
+
+    procedure BBtn_CadClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
+    procedure BBtn_EditarClick(Sender: TObject);
+    procedure BBtn_DelClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  type
+    Contato = record
+
+      Nome: string [50];
+      Data_Nascimento: TDate;
+      Idade: Real;
+      Sexo: string[10];
+      Celular: string[14];
+      Fixo: string [13];
+      CEP: string[9];
+      Estado_Civil: string [20];
+      Relacionamento: string [10];
+      E_Mail: string [25];
+      Organização: string[20];
+      Notas: string [200];
+
+      Status: Boolean;
+
+    end;
+var
+  Form1: TForm1;
+
+  Contatos: array[0..999] of Contato;
+
+  Arquivo: file of Contato;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Atualiza_Lista;
+var
+  i: Integer;
+  x: Integer;
+begin
+  x:= 1;
+
+  StringGrid1.RowCount:= Num_Contatos-1;
+
+  for i := 0 to 99 do
+  begin
+
+    if Contatos[i].Status = True then
+    begin
+
+      StringGrid1.RowCount:= StringGrid1.RowCount+1;
+
+      StringGrid1.Cells[0,x]:= Contatos[i].Nome;
+      StringGrid1.Cells[1,x]:= Contatos[i].Celular;
+
+      Inc(x)
+
+    end;
+
+
+  end;
+
+end;
+
+procedure TForm1.BBtn_CadClick(Sender: TObject);
+begin
+  TS_Cadastro.Show;
+  Limpar();
+end;
+
+procedure TForm1.BBtn_DelClick(Sender: TObject);
+begin
+  Contatos[StringGrid1.Row-1].Status:= False;
+  Atualiza_Lista();
+end;
+
+procedure TForm1.BBtn_EditarClick(Sender: TObject);
+begin
+  BitBtn1.Caption:= 'Editar';
+
+  Editar_Contatos(StringGrid1.Row);
+
+  TS_Cadastro.Show
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+var
+  x: Integer;
+begin
+  if BitBtn1.Caption = 'Salvar' then
+    Salvar(Num_Contatos+1)
+  else
+    Salvar(StringGrid1.Row-1);
+
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+begin
+  Limpar();
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  x: Integer;
+begin
+  x:= Num_Contatos;
+  ShowMessage(IntToStr(x));
+  ShowMessage(contatos[x-1].Nome);
+end;
+
+procedure TForm1.Editar_Contatos(Index: Integer);
+var
+  x: Integer;
+  i: Integer;
+begin
+  x:= Index-1;
+
+  LabeledEdit1.Text:= Contatos[x].Nome;
+  MaskEdit1.Text:= Contatos[x].Celular;
+  MaskEdit2.Text:= Contatos[x].Fixo;
+
+  for i := 0 to 3 do
+  begin
+
+    if ComboBox2.Items[i] = Contatos[x].Relacionamento then
+      ComboBox2.ItemIndex:= i;
+
+  end;
+
+
+  LabeledEdit2.Text:= Contatos[x].Organização;
+  LabeledEdit3.Text:= Contatos[x].E_Mail;
+
+  if Contatos[x].Sexo = 'Masculino' then
+    RadioGroup1.ItemIndex:= 0
+  else
+    RadioGroup1.ItemIndex:= 1;
+
+
+
+  CalendarPicker1.Date:= Contatos[x].Data_Nascimento;
+  MaskEdit3.Text:= Contatos[x].CEP;
+
+  for i := 0 to 4 do
+  begin
+
+    if ComboBox3.Items[i] = Contatos[x].Estado_Civil then
+      ComboBox2.ItemIndex:= i;
+
+  end;
+
+  Memo2.Text:= Contatos[x].Notas;
+
+  TS_Agenda.Show;
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  i: Integer;
+begin
+
+  Rewrite(Arquivo);                                                             //apaga o arquivo
+
+  for i := 0 to 99 do
+  begin
+
+    if Contatos[i].Status = True then
+      Write(Arquivo, Contatos[i]);                                              //reescreve (salva) o arquivo
+
+  end;
+
+  CloseFile(Arquivo);
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);                                   //criar o programa
+var
+  i: Integer;
+begin
+
+  for i := 0 to 99 do                                                           //zera a agenda
+  begin
+
+    Contatos[i].Status:= False;
+
+  end;
+
+
+  AssignFile(Arquivo, 'AgendaGui.Dat');                                         //vincula a variavel ao arquivo lido
+
+  if FileExists ('AgendaGui.Dat') then                                          //verifica se o arquivo existe
+    Reset(Arquivo)
+  else
+    Rewrite(Arquivo);
+
+  Seek(Arquivo,0);                                                              //posiciona ponteiro no inicio do arquivo
+
+  i:=0;
+  while not(EOF(Arquivo)) do                                                    //até encontrar o fim do registro
+  begin
+
+    Read(Arquivo, Contatos[i]);                                                 //lê o arquivo
+
+    Inc(i);
+
+  end;
+
+
+end;
+
+function TForm1.Idade(Data: TDate): Real;
+var
+  myYear: Word;
+	myMonth: Word;
+  myDay: Word;
+
+  AuxYear: Word;
+	AuxMonth: Word;
+  AuxDay: Word;
+
+  Aux: Tdate;
+
+  X: real;
+
+  Vet: array[0..2] of real;
+
+  i: Integer;
+begin
+  DecodeDate(data, myYear, myMonth, myDay);
+
+  Aux:= now;
+  DecodeDate(Aux, AuxYear, AuxMonth,AuxDay);
+
+  X:= myYear - AuxYear;
+  Vet[0]:= X;
+  X:= myMonth - AuxMonth;
+  Vet[1]:= X;
+  X:= myDay- AuxDay;
+  Vet[2]:= X;
+
+
+  if (Vet[1] < -1) and (Vet[2] < -1) then
+  begin
+
+    x:= Vet[0];
+
+  end
+    else
+      x:= Vet[0]+1;
+
+
+
+    Result:= Abs(X);
+
+end;
+
+procedure TForm1.Limpar;
+begin
+  LabeledEdit1.Clear;
+  MaskEdit1.Clear;
+  MaskEdit2.Clear;
+  ComboBox2.ItemIndex:= 0;
+  LabeledEdit2.Clear;
+  LabeledEdit3.Clear;
+  RadioGroup1.ItemIndex:= 0;
+  CalendarPicker1.Date:= Now;
+  MaskEdit3.Clear;
+  ComboBox3.ItemIndex:= 0;
+  Memo2.Clear;
+  Memo2.Lines.Add('No-Notes');
+end;
+
+function TForm1.Num_Contatos: Integer;
+var
+  i: Integer;
+  Aux: Integer;
+begin
+  Aux:= 0;
+
+  for i := 0 to 99 do
+  begin
+
+    if Contatos[i].Status = True then
+      Inc(Aux)
+
+  end;
+
+  Result:= Aux-1;
+end;
+
+procedure TForm1.Salvar(x: Integer);
+begin
+  Contatos[x].Nome:= LabeledEdit1.Text;
+  Contatos[x].Celular:= MaskEdit1.Text;
+  Contatos[x].Fixo:= MaskEdit2.Text;
+  Contatos[x].Relacionamento:= ComboBox2.Items[ComboBox2.ItemIndex];
+  Contatos[x].Organização:= LabeledEdit2.Text;
+  Contatos[x].E_Mail:= LabeledEdit3.Text;
+  Contatos[x].Sexo:= RadioGroup1.Items[RadioGroup1.ItemIndex];
+  Contatos[x].Data_Nascimento:= CalendarPicker1.Date;
+  Contatos[x].Idade:= Idade(CalendarPicker1.Date);
+  Contatos[x].CEP:= MaskEdit3.Text;
+  Contatos[x].Estado_Civil:= ComboBox3.Items[ComboBox3.ItemIndex];
+  Contatos[x].Notas:= Memo2.Text;
+
+  Contatos[x].Status:= True;
+
+
+  TS_Agenda.Show;
+end;
+
+procedure TForm1.StringGrid1Click(Sender: TObject);
+var
+  Aux1: string;
+  i: Integer;
+  Aux2: Integer;
+begin
+
+  if not(StringGrid1.Row = 0) then
+  begin
+
+    Aux1:= StringGrid1.Cells[1,StringGrid1.Row];
+
+    for i := 0 to 99 do
+    begin
+
+      if Aux1 = Contatos[i].Celular then
+        Aux2:= i;
+
+    end;
+
+    Memo1.Clear;
+    Memo1.Lines.Add(Contatos[Aux2].Nome);                                       //nome
+
+    Memo1.Lines.Add('');
+
+    Memo1.Lines.Add('Celular: '+Contatos[Aux2].Celular);
+
+    Memo1.Lines.Add('Fixo:'+Contatos[Aux2].Fixo);
+
+    Memo1.Lines.Add('');
+
+    Memo1.Lines.Add('Relacionamento: '+(Contatos[Aux2].Relacionamento));
+
+    Memo1.Lines.Add('');
+
+    Memo1.Lines.Add('Organização: '+Contatos[Aux2].Organização);
+
+    Memo1.Lines.Add('E-Mail: '+Contatos[Aux2].E_Mail);
+
+    Memo1.Lines.Add('');
+
+    Memo1.Lines.Add('Informações Pessoais');
+    Memo1.Lines.Add('Idade: '+FloatToStr(Contatos[Aux2].Idade));
+    Memo1.Lines.Add('Data de Nascimento: '+DateToStr(Contatos[Aux2].Data_Nascimento));
+    Memo1.Lines.Add('Sexo: '+(Contatos[Aux2].Sexo));
+    Memo1.Lines.Add('Estado Civil: '+(Contatos[Aux2].Estado_Civil));
+    Memo1.Lines.Add('CEP: '+Contatos[Aux2].CEP);
+
+    Memo1.Lines.Add('');
+
+    Memo1.Lines.Add('Notas:');
+    Memo1.Lines.Add(Contatos[Aux2].Notas);
+
+    BBtn_Editar.Enabled:= True;
+    BBtn_Del.Enabled:= True;
+
+  end
+    else
+      Memo1.Clear
+
+end;
+
+procedure TForm1.TS_AgendaShow(Sender: TObject);
+begin
+  StringGrid1.Cells[0,0]:= 'Nome';
+  StringGrid1.Cells[1,0]:= 'Celular';
+
+  Atualiza_Lista();
+
+  Memo1.Clear;
+  BBtn_Editar.Enabled:= False;
+  BBtn_Del.Enabled:= False;
+
+end;
+
+function TForm1.Verifica_Pos: Integer;
+var
+  i: Integer;
+begin
+  for i := 0 to 99 do
+  begin
+
+    if Contatos[i].Status = True then
+    begin
+
+      Result:= i;
+      break;
+
+    end
+
+  end;
+
+  Result:= -1;
+
+end;
+
+end.

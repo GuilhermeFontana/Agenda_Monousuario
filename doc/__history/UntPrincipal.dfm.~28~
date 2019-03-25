@@ -1,0 +1,899 @@
+object Form1: TForm1
+  Left = 244
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Agenda Gui'
+  ClientHeight = 661
+  ClientWidth = 1265
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl
+    Left = 0
+    Top = -20
+    Width = 1280
+    Height = 720
+    ActivePage = TS_Agenda
+    TabOrder = 0
+    object TS_Agenda: TTabSheet
+      Caption = 'TS_Agenda'
+      ImageIndex = 1
+      OnShow = TS_AgendaShow
+      ExplicitWidth = 150
+      object StringGrid1: TStringGrid
+        Left = 27
+        Top = 3
+        Width = 537
+        Height = 549
+        ColCount = 2
+        DefaultColWidth = 170
+        FixedCols = 0
+        RowCount = 1
+        FixedRows = 0
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = StringGrid1Click
+        RowHeights = (
+          24)
+      end
+      object Memo1: TMemo
+        Left = 672
+        Top = 3
+        Width = 537
+        Height = 550
+        Enabled = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+      end
+      object BBtn_Cad: TBitBtn
+        Left = 27
+        Top = 597
+        Width = 150
+        Height = 50
+        Caption = 'Cadastrar'
+        Glyph.Data = {
+          66010000424D6601000000000000760000002800000014000000140000000100
+          040000000000F0000000C40E0000C40E00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+          877778FF0000FFFFFFFFFFF808FF807F0000FFFFFFFFFFF0FF88FF0800000000
+          00000777FF80FF8700000FFFFFFFFF08F70008F70000808FFFFFFF08F87088F7
+          0000F8707FFFFF77FF87FF870000FFFF70FFFF708FFFFF080000FFFFF77FF78F
+          0788708F0000FFFFF77FF08FF7007FFF0000FFFFF08FF80FFFFFFFFF0000FFFF
+          80FFFF08FFFFFFFF0000FFFF0FFFFF80FFFFFFFF0000FFFF0FFFFF80FFFFFFFF
+          0000FFFF0FFFFF80FFFFFFFF0000FFFF0FFFFFF0FFFFFFFF0000FFFF0FFFFFF0
+          FFFFFFFF0000FFFF0FFFFF80FFFFFFFF0000FFFF808FF708FFFFFFFF0000FFFF
+          F87777FFFFFFFFFF0000}
+        TabOrder = 2
+        OnClick = BBtn_CadClick
+      end
+      object BBtn_Editar: TBitBtn
+        Left = 220
+        Top = 597
+        Width = 150
+        Height = 50
+        Caption = 'Editar'
+        Glyph.Data = {
+          F6040000424DF604000000000000760000002800000030000000300000000100
+          04000000000080040000C40E0000C40E00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+          FFFFFFFFFFFF778FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000
+          788FFFFFFFFFFFFFFFFFFFF877777777777777777FFF00000007FFFFFFFFFFFF
+          FFFFFFF800000000000000007FFF700000007FFFFFFFFFFFFFFFFFF800888888
+          888888888FFF7000088007FFFFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFFFF8000
+          8FF8007FFFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFF007FFFF7007FFFFFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFFFFF7008FFFF7007FFFFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFFFFFF7008FFFF7007FFFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFFFF7
+          008FFFF7007FFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFFFFF7008FFFF7007FFFF
+          FFFFFFF807FFFFFFFFFFFFFFFFFFFFFFF7008FFFF8007FFFFFFFFFF807FFFFFF
+          FFFFFFFFFFFFFFFFFF7008FFFF8007FFFFFFFFF807FFFFFFFFFFFFFFFFFFFFFF
+          FFF7008FFFF8007FFFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFF7008FFFF8007
+          FFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFF7008FFFF8007FFFFFF807FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFF7008FFFF8007FFFFF807FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFF7008FFFF8007FFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7008FFF8
+          0008FFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7008FF70007FFF807FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFF7008700007FFF807FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFF878700000007FFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708F7000
+          0008FFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708FF700008FFFF807FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFF708FFF888FFFFFF807FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFF708FFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708FFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708FFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFF708FFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFF708FFFFFFFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708FFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF708FFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFFF8888888888887008FFFFFFFFFFFF807FFFFFFFFFFFFFFFF800000
+          00000000008FFFFFFFFFFFF807FFFFFFFFFFFFFFFF8007777777770007FFFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFF807FFFFFFFF80078FFFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFF807FFFFFFF80078FFFFFFFFFFFFFF807FFFFFFFFFFFFFFFF807FFF
+          FFF80078FFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFF807FFFFF80078FFFFFFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFF807FFFF80078FFFFFFFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFF807FFF80078FFFFFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFF807FF8
+          0078FFFFFFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFF807F8007FFFFFFFFFFFFFF
+          FFFFFFF807FFFFFFFFFFFFFFFF8078007FFFFFFFFFFFFFFFFFFFFFF807FFFFFF
+          FFFFFFFFFF800007FFFFFFFFFFFFFFFFFFFFFFF807FFFFFFFFFFFFFFFF80007F
+          FFFFFFFFFFFFFFFFFFFFFFF80000000000000000000007FFFFFFFFFFFFFFFFFF
+          FFFFFFF8000000000000000000007FFFFFFFFFFFFFFFFFFFFFFF}
+        TabOrder = 3
+        OnClick = BBtn_EditarClick
+      end
+      object BBtn_Del: TBitBtn
+        Left = 414
+        Top = 597
+        Width = 150
+        Height = 50
+        Caption = 'Excluir'
+        TabOrder = 4
+        OnClick = BBtn_DelClick
+      end
+      object GB_Filtros: TGroupBox
+        Left = 672
+        Top = 2
+        Width = 537
+        Height = 550
+        Caption = 'Filtros'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        Visible = False
+        object Label9: TLabel
+          Left = 48
+          Top = 103
+          Width = 169
+          Height = 23
+          Caption = 'Data de Nascimento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = Label9Click
+          OnMouseEnter = Label9MouseEnter
+          OnMouseLeave = Label9MouseLeave
+        end
+        object Label10: TLabel
+          Left = 48
+          Top = 171
+          Width = 64
+          Height = 23
+          Caption = 'Label10'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label11: TLabel
+          Left = 152
+          Top = 171
+          Width = 64
+          Height = 23
+          Caption = 'Label10'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object LabeledEdit4: TLabeledEdit
+          Left = 48
+          Top = 56
+          Width = 281
+          Height = 31
+          EditLabel.Width = 49
+          EditLabel.Height = 23
+          EditLabel.Caption = 'Nome'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -19
+          EditLabel.Font.Name = 'Tahoma'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object TrackBar1: TTrackBar
+          Left = 48
+          Top = 140
+          Width = 91
+          Height = 25
+          Max = 100
+          TabOrder = 1
+          OnChange = TrackBar1Change
+        end
+        object RadioGroup2: TRadioGroup
+          Left = 44
+          Top = 199
+          Width = 253
+          Height = 59
+          Caption = 'Sexo'
+          Columns = 2
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Items.Strings = (
+            'Masculino'
+            'Feminino')
+          ParentFont = False
+          TabOrder = 2
+        end
+        object MaskEdit4: TMaskEdit
+          Left = 48
+          Top = 264
+          Width = 49
+          Height = 31
+          EditMask = '(99)'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          MaxLength = 4
+          ParentFont = False
+          TabOrder = 3
+          Text = '(  )'
+        end
+        object MaskEdit5: TMaskEdit
+          Left = 48
+          Top = 301
+          Width = 105
+          Height = 31
+          EditMask = '00000-000;1;_'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          MaxLength = 9
+          ParentFont = False
+          TabOrder = 4
+          Text = '     -   '
+        end
+        object ComboBox1: TComboBox
+          Left = 48
+          Top = 338
+          Width = 145
+          Height = 31
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ItemIndex = 0
+          ParentFont = False
+          TabOrder = 5
+          Text = 'Solteiro'
+          Items.Strings = (
+            'Solteiro'
+            'Namorando'
+            'Casado'
+            'Divirciado'
+            'Vi'#250'vo')
+        end
+        object ComboBox4: TComboBox
+          Left = 48
+          Top = 375
+          Width = 145
+          Height = 31
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ItemIndex = 1
+          ParentFont = False
+          TabOrder = 6
+          Text = 'Amigo'
+          Items.Strings = (
+            'Amigo'
+            'Fam'#237'lia'
+            'Favorito'
+            'Trabalho')
+        end
+        object LabeledEdit5: TLabeledEdit
+          Left = 48
+          Top = 435
+          Width = 297
+          Height = 31
+          EditLabel.Width = 103
+          EditLabel.Height = 23
+          EditLabel.Caption = 'Organiza'#231#227'o'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -19
+          EditLabel.Font.Name = 'Tahoma'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+        end
+        object Button1: TButton
+          Left = 48
+          Top = 489
+          Width = 150
+          Height = 50
+          Caption = 'Button1'
+          TabOrder = 8
+          OnClick = Button1Click
+        end
+        object CheckBox1: TCheckBox
+          Left = 17
+          Top = 60
+          Width = 25
+          Height = 29
+          Hint = 'Este Campo S'#243' Pode Ser Selecoinado Sozinho'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 9
+          OnClick = CheckBox1Click
+        end
+        object CheckBox2: TCheckBox
+          Left = 17
+          Top = 140
+          Width = 25
+          Height = 25
+          TabOrder = 10
+        end
+        object CheckBox3: TCheckBox
+          Left = 13
+          Top = 217
+          Width = 25
+          Height = 25
+          TabOrder = 11
+        end
+        object CheckBox4: TCheckBox
+          Left = 17
+          Top = 441
+          Width = 25
+          Height = 25
+          TabOrder = 12
+        end
+        object CheckBox5: TCheckBox
+          Left = 17
+          Top = 270
+          Width = 25
+          Height = 25
+          TabOrder = 13
+        end
+        object CheckBox6: TCheckBox
+          Left = 17
+          Top = 307
+          Width = 25
+          Height = 25
+          TabOrder = 14
+        end
+        object CheckBox7: TCheckBox
+          Left = 17
+          Top = 381
+          Width = 25
+          Height = 25
+          TabOrder = 15
+        end
+        object CheckBox8: TCheckBox
+          Left = 17
+          Top = 344
+          Width = 25
+          Height = 25
+          TabOrder = 16
+        end
+        object CheckBox9: TCheckBox
+          Left = 17
+          Top = 106
+          Width = 25
+          Height = 25
+          TabOrder = 17
+          OnClick = CheckBox9Click
+        end
+        object TrackBar2: TTrackBar
+          Left = 142
+          Top = 140
+          Width = 91
+          Height = 25
+          Max = 100
+          TabOrder = 18
+          OnChange = TrackBar2Change
+        end
+        object BitBtn2: TBitBtn
+          Left = 501
+          Top = 13
+          Width = 33
+          Height = 36
+          Caption = 'BitBtn2'
+          TabOrder = 19
+          OnClick = BitBtn2Click
+        end
+        object Panel1: TPanel
+          Left = 325
+          Top = 129
+          Width = 200
+          Height = 200
+          BorderStyle = bsSingle
+          Caption = 'Panel1'
+          ShowCaption = False
+          TabOrder = 20
+          Visible = False
+          object Label12: TLabel
+            Left = 16
+            Top = 21
+            Width = 105
+            Height = 23
+            Caption = 'Data Min'#237'ma'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label13: TLabel
+            Left = 16
+            Top = 114
+            Width = 109
+            Height = 23
+            Caption = 'Data M'#225'xima'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object MaskEdit6: TMaskEdit
+            Left = 16
+            Top = 61
+            Width = 105
+            Height = 31
+            EditMask = '!99/99/9999;1;_'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            MaxLength = 10
+            ParentFont = False
+            TabOrder = 0
+            Text = '  /  /    '
+          end
+          object MaskEdit7: TMaskEdit
+            Left = 16
+            Top = 149
+            Width = 105
+            Height = 31
+            EditMask = '!99/99/9999;1;_'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            MaxLength = 10
+            ParentFont = False
+            TabOrder = 1
+            Text = '  /  /    '
+          end
+          object BitBtn4: TBitBtn
+            Left = 158
+            Top = -2
+            Width = 40
+            Height = 40
+            Caption = 'BitBtn3'
+            TabOrder = 2
+            OnClick = BitBtn4Click
+          end
+        end
+        object Panel2: TPanel
+          Left = 327
+          Top = 129
+          Width = 200
+          Height = 200
+          BorderStyle = bsSingle
+          Caption = 'Panel1'
+          ShowCaption = False
+          TabOrder = 21
+          Visible = False
+          object RadioGroup3: TRadioGroup
+            Left = 7
+            Top = 46
+            Width = 170
+            Height = 138
+            Hint = 
+              'Simples: 1 valor especifico (dia, m'#234's ou ano) / Composta: data m' +
+              #237'nima e data m'#225'ximo'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Items.Strings = (
+              'Simples'
+              'Composta')
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = RadioGroup3Click
+          end
+          object BitBtn5: TBitBtn
+            Left = 157
+            Top = -2
+            Width = 40
+            Height = 40
+            Caption = 'BitBtn3'
+            TabOrder = 1
+            OnClick = BitBtn5Click
+          end
+        end
+        object Panel3: TPanel
+          Left = 327
+          Top = 129
+          Width = 200
+          Height = 200
+          BorderStyle = bsSingle
+          Caption = 'Panel1'
+          ShowCaption = False
+          TabOrder = 22
+          Visible = False
+          object LabeledEdit6: TLabeledEdit
+            Left = 40
+            Top = 26
+            Width = 65
+            Height = 31
+            EditLabel.Width = 27
+            EditLabel.Height = 23
+            EditLabel.Caption = 'Dia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            LabelPosition = lpRight
+            NumbersOnly = True
+            ParentFont = False
+            TabOrder = 0
+          end
+          object LabeledEdit7: TLabeledEdit
+            Left = 40
+            Top = 88
+            Width = 68
+            Height = 31
+            EditLabel.Width = 33
+            EditLabel.Height = 23
+            EditLabel.Caption = 'M'#234's'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            LabelPosition = lpRight
+            NumbersOnly = True
+            ParentFont = False
+            TabOrder = 1
+          end
+          object LabeledEdit8: TLabeledEdit
+            Left = 40
+            Top = 152
+            Width = 65
+            Height = 31
+            EditLabel.Width = 32
+            EditLabel.Height = 23
+            EditLabel.Caption = 'Ano'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            LabelPosition = lpRight
+            NumbersOnly = True
+            ParentFont = False
+            TabOrder = 2
+          end
+          object CheckBox10: TCheckBox
+            Left = 9
+            Top = 24
+            Width = 25
+            Height = 25
+            TabOrder = 3
+            OnClick = CheckBox10Click
+          end
+          object CheckBox11: TCheckBox
+            Left = 9
+            Top = 86
+            Width = 25
+            Height = 25
+            TabOrder = 4
+            OnClick = CheckBox11Click
+          end
+          object CheckBox12: TCheckBox
+            Left = 9
+            Top = 150
+            Width = 25
+            Height = 25
+            TabOrder = 5
+            OnClick = CheckBox12Click
+          end
+          object BitBtn3: TBitBtn
+            Left = 158
+            Top = -4
+            Width = 40
+            Height = 40
+            Caption = 'BitBtn3'
+            TabOrder = 6
+            OnClick = BitBtn3Click
+          end
+        end
+      end
+    end
+    object TS_Cadastro: TTabSheet
+      Caption = 'TS_Cadastro'
+      ImageIndex = 2
+      OnShow = TS_CadastroShow
+      ExplicitWidth = 597
+      ExplicitHeight = 385
+      object Label1: TLabel
+        Left = 85
+        Top = 33
+        Width = 33
+        Height = 13
+        Caption = 'Celular'
+      end
+      object Label2: TLabel
+        Left = 44
+        Top = 60
+        Width = 74
+        Height = 13
+        Caption = 'Relaconamento'
+      end
+      object Label3: TLabel
+        Left = 90
+        Top = 252
+        Width = 28
+        Height = 13
+        Caption = 'Notas'
+      end
+      object Label4: TLabel
+        Left = 242
+        Top = 33
+        Width = 20
+        Height = 13
+        Caption = 'Fixo'
+      end
+      object Label5: TLabel
+        Left = 22
+        Top = 171
+        Width = 96
+        Height = 13
+        Caption = 'Data de Nascimento'
+      end
+      object Label6: TLabel
+        Left = 63
+        Top = 225
+        Width = 55
+        Height = 13
+        Caption = 'Estado Civ'#237'l'
+      end
+      object Label7: TLabel
+        Left = 99
+        Top = 198
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object Label8: TLabel
+        Left = 94
+        Top = 144
+        Width = 24
+        Height = 13
+        Caption = 'Sexo'
+      end
+      object MaskEdit1: TMaskEdit
+        Left = 124
+        Top = 30
+        Width = 98
+        Height = 21
+        EditMask = '!\(99\)00000-0000;1;_'
+        MaxLength = 14
+        TabOrder = 1
+        Text = '(  )     -    '
+      end
+      object LabeledEdit1: TLabeledEdit
+        Left = 124
+        Top = 3
+        Width = 242
+        Height = 21
+        EditLabel.Width = 27
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Nome'
+        LabelPosition = lpLeft
+        TabOrder = 0
+      end
+      object LabeledEdit2: TLabeledEdit
+        Left = 124
+        Top = 84
+        Width = 216
+        Height = 21
+        EditLabel.Width = 60
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Organiza'#231#227'o'
+        LabelPosition = lpLeft
+        TabOrder = 4
+      end
+      object LabeledEdit3: TLabeledEdit
+        Left = 124
+        Top = 111
+        Width = 216
+        Height = 21
+        EditLabel.Width = 28
+        EditLabel.Height = 13
+        EditLabel.Caption = 'E-Mail'
+        LabelPosition = lpLeft
+        TabOrder = 5
+      end
+      object Memo2: TMemo
+        Left = 124
+        Top = 249
+        Width = 325
+        Height = 91
+        TabOrder = 10
+      end
+      object BitBtn1: TBitBtn
+        Left = 124
+        Top = 357
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 11
+        OnClick = BitBtn1Click
+      end
+      object MaskEdit2: TMaskEdit
+        Left = 268
+        Top = 30
+        Width = 98
+        Height = 21
+        EditMask = '!\(99\)0000-0000;1;_'
+        MaxLength = 13
+        TabOrder = 2
+        Text = '(  )    -    '
+      end
+      object CalendarPicker1: TCalendarPicker
+        Left = 124
+        Top = 168
+        Height = 21
+        CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+        CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+        CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+        CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+        CalendarHeaderInfo.DaysOfWeekFont.Style = []
+        CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+        CalendarHeaderInfo.Font.Color = clWindowText
+        CalendarHeaderInfo.Font.Height = -20
+        CalendarHeaderInfo.Font.Name = 'Segoe UI'
+        CalendarHeaderInfo.Font.Style = []
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+        TextHint = 'select a date'
+      end
+      object ComboBox2: TComboBox
+        Left = 124
+        Top = 57
+        Width = 145
+        Height = 21
+        TabOrder = 3
+        Text = 'Amigo'
+        Items.Strings = (
+          'Amigo'
+          'Fam'#237'lia'
+          'Favorito'
+          'Trabalho')
+      end
+      object ComboBox3: TComboBox
+        Left = 124
+        Top = 222
+        Width = 145
+        Height = 21
+        TabOrder = 9
+        Text = 'Solteiro'
+        Items.Strings = (
+          'Solteiro'
+          'Namorando'
+          'Casado'
+          'Divirciado'
+          'Vi'#250'vo')
+      end
+      object MaskEdit3: TMaskEdit
+        Left = 124
+        Top = 195
+        Width = 95
+        Height = 21
+        EditMask = '00000\-999;1;_'
+        MaxLength = 9
+        TabOrder = 8
+        Text = '     -   '
+      end
+      object RadioGroup1: TRadioGroup
+        Left = 124
+        Top = 135
+        Width = 185
+        Height = 30
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Columns = 2
+        Items.Strings = (
+          'Masculino'
+          'Feminino')
+        TabOrder = 6
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 608
+    Top = 368
+    object Opces1: TMenuItem
+      Caption = 'Opc'#245'es'
+      object Voltar1: TMenuItem
+        Caption = 'Voltar'
+        OnClick = Voltar1Click
+      end
+      object Limpar1: TMenuItem
+        Caption = 'Limpar'
+        OnClick = Limpar1Click
+      end
+    end
+    object Filtrar1: TMenuItem
+      Caption = 'Filtros'
+      object Abrir1: TMenuItem
+        Caption = 'Abrir'
+        OnClick = Abrir1Click
+      end
+      object Limpar2: TMenuItem
+        Caption = 'Limpar'
+        OnClick = Limpar2Click
+      end
+    end
+  end
+end

@@ -1,0 +1,263 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 418
+  ClientWidth = 613
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl
+    Left = 0
+    Top = -20
+    Width = 605
+    Height = 413
+    ActivePage = TS_Cadastro
+    TabOrder = 0
+    object TS_Agenda: TTabSheet
+      Caption = 'TS_Agenda'
+      ImageIndex = 1
+      OnShow = TS_AgendaShow
+      object StringGrid1: TStringGrid
+        Left = 3
+        Top = 3
+        Width = 254
+        Height = 294
+        ColCount = 2
+        DefaultColWidth = 124
+        FixedCols = 0
+        RowCount = 1
+        FixedRows = 0
+        TabOrder = 0
+        OnClick = StringGrid1Click
+        ColWidths = (
+          124
+          124)
+        RowHeights = (
+          24)
+      end
+      object Memo1: TMemo
+        Left = 288
+        Top = 3
+        Width = 281
+        Height = 294
+        TabOrder = 1
+      end
+      object BBtn_Cad: TBitBtn
+        Left = 3
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Cadastrar'
+        TabOrder = 2
+      end
+      object BBtn_Editar: TBitBtn
+        Left = 91
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 3
+      end
+      object BBtn_Del: TBitBtn
+        Left = 182
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        TabOrder = 4
+      end
+    end
+    object TS_Cadastro: TTabSheet
+      Caption = 'TS_Cadastro'
+      ImageIndex = 2
+      ExplicitLeft = 8
+      ExplicitTop = 28
+      object Label1: TLabel
+        Left = 85
+        Top = 33
+        Width = 33
+        Height = 13
+        Caption = 'Celular'
+      end
+      object Label2: TLabel
+        Left = 44
+        Top = 168
+        Width = 74
+        Height = 13
+        Caption = 'Relaconamento'
+      end
+      object Label3: TLabel
+        Left = 90
+        Top = 254
+        Width = 28
+        Height = 13
+        Caption = 'Notas'
+      end
+      object Label4: TLabel
+        Left = 98
+        Top = 60
+        Width = 20
+        Height = 13
+        Caption = 'Fixo'
+      end
+      object Label5: TLabel
+        Left = 22
+        Top = 88
+        Width = 96
+        Height = 13
+        Caption = 'Data de Nascimento'
+      end
+      object Label6: TLabel
+        Left = 63
+        Top = 141
+        Width = 55
+        Height = 13
+        Caption = 'Estado Civ'#237'l'
+      end
+      object Label7: TLabel
+        Left = 99
+        Top = 114
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object MaskEdit1: TMaskEdit
+        Left = 124
+        Top = 30
+        Width = 98
+        Height = 21
+        EditMask = '!\(99\)00000-0000;1;_'
+        MaxLength = 14
+        TabOrder = 0
+        Text = '(  )     -    '
+      end
+      object LabeledEdit1: TLabeledEdit
+        Left = 124
+        Top = 3
+        Width = 216
+        Height = 21
+        EditLabel.Width = 27
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Nome'
+        LabelPosition = lpLeft
+        TabOrder = 1
+      end
+      object LabeledEdit2: TLabeledEdit
+        Left = 124
+        Top = 219
+        Width = 216
+        Height = 21
+        EditLabel.Width = 60
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Organiza'#231#227'o'
+        LabelPosition = lpLeft
+        TabOrder = 2
+      end
+      object LabeledEdit3: TLabeledEdit
+        Left = 124
+        Top = 192
+        Width = 216
+        Height = 21
+        EditLabel.Width = 28
+        EditLabel.Height = 13
+        EditLabel.Caption = 'E-Mail'
+        LabelPosition = lpLeft
+        TabOrder = 3
+      end
+      object Memo2: TMemo
+        Left = 124
+        Top = 246
+        Width = 325
+        Height = 123
+        TabOrder = 4
+      end
+      object BitBtn1: TBitBtn
+        Left = 512
+        Top = 357
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 5
+      end
+      object MaskEdit2: TMaskEdit
+        Left = 124
+        Top = 57
+        Width = 98
+        Height = 21
+        EditMask = '!\(99\)0000-0000;1;_'
+        MaxLength = 13
+        TabOrder = 6
+        Text = '(  )    -    '
+      end
+      object CalendarPicker1: TCalendarPicker
+        Left = 124
+        Top = 84
+        Height = 21
+        CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+        CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+        CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+        CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+        CalendarHeaderInfo.DaysOfWeekFont.Style = []
+        CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+        CalendarHeaderInfo.Font.Color = clWindowText
+        CalendarHeaderInfo.Font.Height = -20
+        CalendarHeaderInfo.Font.Name = 'Segoe UI'
+        CalendarHeaderInfo.Font.Style = []
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+      end
+      object ComboBox2: TComboBox
+        Left = 124
+        Top = 165
+        Width = 145
+        Height = 21
+        ItemIndex = 0
+        TabOrder = 8
+        Text = 'Amigo'
+        Items.Strings = (
+          'Amigo'
+          'Fam'#237'lia'
+          'Favorito'
+          'Trabalho')
+      end
+      object ComboBox3: TComboBox
+        Left = 124
+        Top = 138
+        Width = 145
+        Height = 21
+        ItemIndex = 0
+        TabOrder = 9
+        Text = 'Solteiro'
+        Items.Strings = (
+          'Solteiro'
+          'Namorando'
+          'Casado'
+          'Divirciado'
+          'Vi'#250'vo')
+      end
+      object MaskEdit3: TMaskEdit
+        Left = 124
+        Top = 111
+        Width = 95
+        Height = 21
+        EditMask = '00000\-999;1;_'
+        MaxLength = 9
+        TabOrder = 10
+        Text = '     -   '
+      end
+    end
+  end
+end

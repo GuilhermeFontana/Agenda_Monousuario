@@ -1,0 +1,129 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 411
+  ClientWidth = 613
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl
+    Left = 0
+    Top = -20
+    Width = 605
+    Height = 413
+    ActivePage = TS_Agenda
+    TabOrder = 0
+    object TS_Login: TTabSheet
+      Caption = 'TS_Login'
+      ExplicitTop = 23
+      ExplicitWidth = 281
+      ExplicitHeight = 165
+      object Panel1: TPanel
+        Left = 216
+        Top = 104
+        Width = 185
+        Height = 157
+        Caption = 'Panel1'
+        ShowCaption = False
+        TabOrder = 0
+        object Lbl_Cadastrar: TLabel
+          Left = 66
+          Top = 126
+          Width = 59
+          Height = 13
+          Caption = 'Cadastre-se'
+          OnClick = Lbl_CadastrarClick
+        end
+        object Lbl_Logar: TLabel
+          Left = 82
+          Top = 99
+          Width = 27
+          Height = 13
+          Caption = 'Logar'
+          OnClick = Lbl_LogarClick
+        end
+        object LE_Usuario: TLabeledEdit
+          Left = 32
+          Top = 24
+          Width = 121
+          Height = 21
+          EditLabel.Width = 36
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Usu'#225'rio'
+          MaxLength = 50
+          TabOrder = 0
+        end
+        object LE_Senha: TLabeledEdit
+          Left = 32
+          Top = 72
+          Width = 121
+          Height = 21
+          EditLabel.Width = 30
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Senha'
+          MaxLength = 50
+          PasswordChar = '*'
+          TabOrder = 1
+        end
+      end
+    end
+    object TS_Agenda: TTabSheet
+      Caption = 'TS_Agenda'
+      ImageIndex = 1
+      OnShow = TS_AgendaShow
+      ExplicitLeft = 8
+      ExplicitTop = 28
+      object StringGrid1: TStringGrid
+        Left = 3
+        Top = 3
+        Width = 254
+        Height = 294
+        ColCount = 2
+        DefaultColWidth = 124
+        FixedCols = 0
+        RowCount = 1
+        FixedRows = 0
+        TabOrder = 0
+        OnClick = StringGrid1Click
+      end
+      object Memo1: TMemo
+        Left = 288
+        Top = 3
+        Width = 281
+        Height = 294
+        TabOrder = 1
+      end
+      object BBtn_Cad: TBitBtn
+        Left = 3
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Cadastrar'
+        TabOrder = 2
+      end
+      object BBtn_Editar: TBitBtn
+        Left = 91
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 3
+      end
+      object BBtn_Del: TBitBtn
+        Left = 182
+        Top = 328
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        TabOrder = 4
+      end
+    end
+  end
+end
